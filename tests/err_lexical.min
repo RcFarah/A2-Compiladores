@@ -1,0 +1,6 @@
+# Teste ERRO (Léxico):
+# Deve reportar um "token recognition error" (Erro Léxico).
+# O caractere '@' não é reconhecido pela gramática do lexer.
+
+int x = 10;
+int y = 5 @ 2;

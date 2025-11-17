@@ -1,0 +1,11 @@
+# Teste OK (Arrays):
+# Testa a criação de um array ('new int[3]'), a atribuição
+# de valores a índices (a[0] = 10) e o acesso a
+# valores de índices para uso em expressões (a[0] + 5).
+
+int[] a = new int[3];
+a[0] = 10;
+a[1] = a[0] + 5;
+a[2] = 3;
+
+print(a[1]); # 15

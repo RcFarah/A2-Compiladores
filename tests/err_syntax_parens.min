@@ -1,0 +1,7 @@
+# Teste ERRO (Sintaxe):
+# Deve reportar um "Erro de Sintaxe" (ex: "missing ')'").
+# O parser espera um ')' para fechar a condição do 'if'.
+
+if (x > 5 { 
+    print(x);
+}

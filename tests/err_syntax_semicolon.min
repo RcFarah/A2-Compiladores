@@ -1,0 +1,6 @@
+# Teste ERRO (Sintaxe):
+# Deve reportar um "Erro de Sintaxe" (ex: "mismatched input").
+# O parser espera um ';' no final da declaração 'int x = 10'.
+
+int x = 10 
+print(x);

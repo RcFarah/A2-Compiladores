@@ -1,0 +1,15 @@
+# Teste OK (Comentários):
+# Testa os comentários de linha única (#) e de múltiplas linhas (/*...*/).
+# O arquivo é sintaticamente válido e deve ser processado sem erros.
+# O interpretador não deve produzir nenhuma saída.
+
+/*
+  Comentário de múltiplas
+  linhas.
+*/
+
+{
+    # Um bloco vazio com um comentário
+}
+
+# Fim do arquivo.

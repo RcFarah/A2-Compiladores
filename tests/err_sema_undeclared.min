@@ -1,0 +1,6 @@
+# Teste ERRO (Semântico - Escopo):
+# Deve reportar "Erro Semântico: Variável 'y' não declarada."
+# A variável 'y' é usada em uma expressão sem nunca ter sido declarada.
+
+int x = 10;
+x = y + 5;

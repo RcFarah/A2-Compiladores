@@ -1,0 +1,6 @@
+# Teste ERRO (Semântico - Constante):
+# Deve reportar "Erro Semântico: Não pode atribuir a variável constante 'x'."
+# A variável 'x' foi declarada como 'const' e não pode ser modificada.
+
+const int x = 10;
+x = 20;

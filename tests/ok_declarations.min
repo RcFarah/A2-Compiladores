@@ -1,0 +1,11 @@
+# Teste OK (Declarações):
+# Testa a declaração, inicialização e impressão de todos os tipos base
+# (int, float, bool, string) e de uma constante (const).
+
+int i = 10;
+float f = 3.14;
+bool b = true;
+string s = "Hello";
+const int c = 100;
+
+print(i, f, b, s, c); # 10 3.14 true Hello 100

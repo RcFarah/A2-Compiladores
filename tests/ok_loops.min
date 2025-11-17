@@ -1,0 +1,17 @@
+# Teste OK (Loops):
+# Testa os loops 'while' (deve imprimir 0, 1, 2)
+# e 'do-while' (deve imprimir 0, pois executa o bloco 1 vez
+# antes de checar a condição falsa).
+
+int i = 0;
+while (i < 3) {
+    print(i); # 0 1 2
+    i = i + 1;
+}
+
+print("---");
+
+int j = 0;
+do {
+    print(j); # 0
+} while (j < 0); # Condição falsa, mas executa uma vez

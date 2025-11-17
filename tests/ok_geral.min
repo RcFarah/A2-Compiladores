@@ -1,0 +1,29 @@
+# Teste OK (Geral):
+# Um teste "kitchen-sink" que usa múltiplas funcionalidades.
+# 1. Cria um array.
+# 2. Preenche o array com a sequência de Fibonacci usando um loop 'while'.
+# 3. Itera sobre o array com 'for each' e imprime 'FizzBuzz'.
+
+int[] arr = new int[20];
+arr[0] = 0;
+arr[1] = 1;
+
+# Preenche o array com a sequência de Fibonacci (usando 'while')
+int i = 2;
+while (i < 20) {
+    arr[i] = arr[i - 1] + arr[i - 2];
+    i = i + 1;
+}
+
+# Imprime FizzBuzz para os números (o 'for each' funciona)
+for each (int num : arr) {
+    if (num % 15 == 0) {
+        print("FizzBuzz");
+    } else if (num % 3 == 0) {
+        print("Fizz");
+    } else if (num % 5 == 0) {
+        print("Buzz");
+    } else {
+        print(num);
+    }
+}

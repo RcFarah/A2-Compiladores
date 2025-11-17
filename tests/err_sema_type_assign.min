@@ -1,0 +1,6 @@
+# Teste ERRO (Semântico - Tipo de Atribuição):
+# Deve reportar "Erro Semântico: Não pode atribuir tipo 'bool' à variável 'x' do tipo 'int'."
+# A variável 'x' é 'int', mas recebe um valor 'bool' (true).
+
+int x = 10;
+x = true;

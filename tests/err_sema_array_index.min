@@ -1,0 +1,6 @@
+# Teste ERRO (Semântico - Índice de Array):
+# Deve reportar "Erro Semântico: Índice de array ... deve ser 'int', mas foi 'bool'."
+# O acesso 'a[true]' usa 'bool' como índice, mas arrays exigem 'int'.
+
+int[] a = new int[5];
+a[true] = 10;

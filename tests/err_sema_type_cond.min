@@ -1,0 +1,8 @@
+# Teste ERRO (Semântico - Tipo de Condição):
+# Deve reportar "Erro Semântico: Condição do 'if' deve ser 'bool', mas foi 'int'."
+# A expressão 'x + 5' resulta em 'int', mas o 'if' exige 'bool'.
+
+int x = 10;
+if (x + 5) { 
+    print("ola");
+}

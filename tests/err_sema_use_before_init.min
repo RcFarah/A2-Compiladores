@@ -1,0 +1,6 @@
+# Teste ERRO (Semântico - Uso antes de Inicializar):
+# Deve reportar "Erro Semântico: Variável 'x' usada antes de ser inicializada."
+# 'x' é declarada, mas não tem valor ao ser usada na expressão 'x + 10'.
+
+int x;
+int y = x + 10;

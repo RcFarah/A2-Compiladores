@@ -1,0 +1,18 @@
+# Teste OK (Escopo e Shadowing):
+# Testa se as variáveis são resolvidas corretamente em escopos aninhados.
+# A variável 'x' é "sombreada" (redeclarada) em blocos internos
+# e deve reassumir seu valor anterior ao sair do bloco.
+
+int x = 10;
+print(x); # 10
+
+{
+    int x = 20; # Shadowing
+    print(x); # 20
+    {
+        string x = "hello"; # Shadowing de novo, tipo diferente
+        print(x); # hello
+    }
+    print(x); # 20 (volta ao escopo anterior)
+}
+print(x); # 10 (volta ao escopo global)
