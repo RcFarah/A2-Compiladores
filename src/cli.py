@@ -1,5 +1,3 @@
-# src/cli.py
-
 import sys
 import os
 from antlr4 import *
@@ -72,7 +70,7 @@ def main(argv):
         sema_analyzer = SemanticAnalyzer()
         sema_analyzer.visit(ast_tree)
         
-        # (MODIFICADO) Adiciona cor verde
+        # Adiciona cor verde
         print(f"{Colors.GREEN}Análise semântica concluída com sucesso!{Colors.RESET}")
 
         # 7. Tabela de Símbolos
@@ -104,19 +102,19 @@ def main(argv):
         print(f"Erro: Arquivo não encontrado: {input_file}")
         sys.exit(1)
     
-    # (MODIFICADO) Adiciona cores de erro
+    # Adiciona cores de erro
     except SyntaxError as e:
         print(f"\n{Colors.RED}{Colors.BOLD}!!!!!! ERRO DE SINTAXE !!!!!!{Colors.RESET}")
         print(f"{Colors.YELLOW}{e}{Colors.RESET}")
         sys.exit(1)
 
-    # (MODIFICADO) Adiciona cores de erro
+    # Adiciona cores de erro
     except SemanticError as e:
         print(f"\n{Colors.RED}{Colors.BOLD}!!!!!! ERRO SEMÂNTICO !!!!!!{Colors.RESET}")
         print(f"{Colors.YELLOW}{e}{Colors.RESET}")
         sys.exit(1)
     
-    # (MODIFICADO) Adiciona cores de erro
+    # Adiciona cores de erro
     except RuntimeErrorLang as e:
         print(f"\n{Colors.RED}{Colors.BOLD}!!!!!! ERRO DE EXECUÇÃO (INTÉRPRETE) !!!!!!{Colors.RESET}")
         print(f"{Colors.YELLOW}{e}{Colors.RESET}")
@@ -130,4 +128,5 @@ def main(argv):
 
 
 if __name__ == '__main__':
+
     main(sys.argv)
