@@ -4,7 +4,7 @@
 Implementa o Visitor que constrói a AST.
 Herda de MiniLangVisitor (gerado pelo ANTLR).
 
-(Modificado) Agora, cada nó da AST criado armazena
+Cada nó da AST criado armazena
 informações de linha e coluna para relatórios de erro.
 """
 
@@ -65,7 +65,7 @@ class AstBuilderVisitor(MiniLangVisitor):
     def visitFor_stmt(self, ctx:MiniLangParser.For_stmtContext):
         """for_stmt: FOR LPAREN for_initializer? SEMIC expression? SEMIC for_iterator? RPAREN statement;"""
         initializer = self.visit(ctx.for_initializer()) if ctx.for_initializer() else ast.Empty()
-        # (CORREÇÃO AQUI) - O 'for' (clássico) só tem uma 'expression'
+        # O 'for' (clássico) só tem uma 'expression'
         condition = self.visit(ctx.expression()) if ctx.expression() else ast.Empty()
         iterator = self.visit(ctx.for_iterator()) if ctx.for_iterator() else ast.Empty()
         block = self.visit(ctx.statement())
@@ -114,7 +114,7 @@ class AstBuilderVisitor(MiniLangVisitor):
         
         expression = None
         if ctx.expression():
-            # (CORREÇÃO AQUI) - 'declaration' só tem uma 'expression'
+            # 'declaration' só tem uma 'expression'
             expression = self.visit(ctx.expression())
             
         return ast.Declaration(is_const, var_type, is_array, var_id, expression, 
@@ -132,13 +132,12 @@ class AstBuilderVisitor(MiniLangVisitor):
         value_expr = None
         
         if ctx.LBRACK():
-            # (CORREÇÃO AQUI) - 'assignment' com array tem 2 'expression',
-            # mas elas estão em ordem. expression(0) é o índice, expression(1) é o valor.
-            # Isso ESTAVA CORRETO, o erro estava no 'factor'.
+            # 'assignment' com array tem 2 'expression',
+            # Elas estão em ordem. expression(0) é o índice, expression(1) é o valor.
             index_expr = self.visit(ctx.expression(0))
             value_expr = self.visit(ctx.expression(1))
         else:
-            # (CORREÇÃO AQUI) - 'assignment' normal só tem uma 'expression'
+            # 'assignment' normal só tem uma 'expression'
             value_expr = self.visit(ctx.expression(0))
             
         return ast.Assignment(var_name, index_expr, value_expr,
@@ -220,13 +219,12 @@ class AstBuilderVisitor(MiniLangVisitor):
         """
         if ctx.LPAREN():
             # ( expression )
-            # (CORREÇÃO AQUI)
             return self.visit(ctx.expression())
         
         if ctx.NEW():
             # new type [ expression ]
             array_type = ctx.type_().getText()
-            # (CORREÇÃO AQUI) - O 'new' só tem uma 'expression'
+            # O 'new' só tem uma 'expression'
             size_expr = self.visit(ctx.expression())
             token = ctx.NEW().symbol
             return ast.NewArray(array_type, size_expr, line=token.line, column=token.column)
@@ -239,7 +237,7 @@ class AstBuilderVisitor(MiniLangVisitor):
             if ctx.LBRACK():
                 # Array Access: ID [ expression ]
                 array_id_node = ast.Id(id_token.text, line=id_token.line, column=id_token.column)
-                # (CORREÇÃO AQUI) - O 'array access' só tem uma 'expression'
+                # O 'array access' só tem uma 'expression'
                 index_expr = self.visit(ctx.expression())
                 return ast.ArrayAccess(array_id_node, index_expr, line=id_token.line, column=id_token.column)
                 
@@ -276,4 +274,5 @@ class AstBuilderVisitor(MiniLangVisitor):
             
         if ctx.FALSE():
             token = ctx.FALSE().symbol
+
             return ast.BoolLiteral(False, line=token.line, column=token.column)
