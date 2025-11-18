@@ -1,5 +1,3 @@
-# src/ast_nodes.py
-
 """
 Define todas as classes de nós para a Árvore Sintática Abstrata (AST).
 Cada classe agora armazena 'line' e 'column' para relatórios de erro detalhados.
@@ -167,4 +165,5 @@ class StringLiteral(Node):
 class BoolLiteral(Node):
     def __init__(self, value, line=None, column=None):
         super().__init__(line, column)
+
         self.value = value
