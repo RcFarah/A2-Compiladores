@@ -1,11 +1,9 @@
-# src/pretty.py
-
 """
 Implementa o Pretty Printer para a AST.
 ...
 """
 
-from src import ast_nodes as ast # <--- CORREÇÃO AQUI
+from src import ast_nodes as ast
 
 # Caracteres para desenhar a árvore
 PREFIX_BRANCH = "├── "
@@ -175,4 +173,5 @@ class AstPrettyPrinter:
 def print_ast_ascii(ast_root_node):
     """Função pública para criar e usar o printer."""
     printer = AstPrettyPrinter()
+
     print(printer.print_tree(ast_root_node))
