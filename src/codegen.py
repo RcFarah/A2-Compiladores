@@ -1,5 +1,3 @@
-# src/codegen.py
-
 """
 Implementa a Fase 5: Geração de Código (Codegen).
 (Corrigido) Agora inclui uma Tabela de Símbolos interna para
@@ -9,7 +7,7 @@ renomear (mangle) variáveis e simular o escopo de bloco.
 from src import ast_nodes as ast
 import sys
 
-# --- (NOVO) Tabela de Símbolos para o CodeGen ---
+# --- Tabela de Símbolos para o CodeGen ---
 
 class CodeGenSymbolTable:
     """Gerencia o renomeamento (mangling) de nomes de variáveis."""
@@ -54,7 +52,7 @@ class CodeGenVisitor:
     def __init__(self):
         self.output = []
         self.indent_level = 0
-        self.symtab = CodeGenSymbolTable() # (NOVO)
+        self.symtab = CodeGenSymbolTable() 
 
     def _indent(self):
         return "    " * self.indent_level
@@ -110,7 +108,7 @@ class CodeGenVisitor:
         self._emit("# --- Fim do Código do Usuário ---")
         return "\n".join(self.output)
 
-    # (CORRIGIDO)
+    
     def visit_Block(self, node: ast.Block):
         # Um bloco (mesmo standalone) deve criar um novo escopo de variável
         self.symtab.enter_scope()
@@ -127,7 +125,7 @@ class CodeGenVisitor:
 
     # --- Visitantes de Statements ---
 
-    # (CORRIGIDO)
+    
     def visit_Declaration(self, node: ast.Declaration):
         # 1. Declara na Tabela de Símbolos do Codegen e pega o nome Python
         mangled_name = self.symtab.declare(node.var_id)
@@ -141,7 +139,7 @@ class CodeGenVisitor:
         else:
             self._emit(f"{mangled_name} = None")
 
-    # (CORRIGIDO)
+    
     def visit_Assignment(self, node: ast.Assignment):
         # 1. Busca o nome Python correto da variável
         mangled_name = self.symtab.lookup(node.var_name)
@@ -234,7 +232,7 @@ class CodeGenVisitor:
         self.symtab.leave_scope() # Sai do escopo do 'for'
         self._emit("# Fim do 'for' C-style")
 
-    # (CORRIGIDO)
+    
     def visit_ForEachStatement(self, node: ast.ForEachStatement):
         # 1. Busca o nome Python do iterável
         iterable_mangled_name = self.symtab.lookup(node.iterable_id)
@@ -276,7 +274,7 @@ class CodeGenVisitor:
 
     # --- Visitantes de Fatores (Retornam strings) ---
 
-    # (CORRIGIDO)
+    
     def visit_Id(self, node: ast.Id):
         # Busca o nome Python correto (ex: 'x__0')
         return self.symtab.lookup(node.name)
@@ -307,4 +305,5 @@ class CodeGenVisitor:
         return repr(node.value)
         
     def visit_BoolLiteral(self, node: ast.BoolLiteral):
+
         return "True" if node.value else "False"
