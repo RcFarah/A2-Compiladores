@@ -1,5 +1,3 @@
-# src/sema.py
-
 """
 Implementa a Fase 3: Análise Semântica.
 (Corrigido para lidar corretamente com declarações de array)
@@ -97,7 +95,7 @@ class SymbolTable:
         """Retorna o log de escopos para impressão."""
         return "\n".join(self.debug_output)
 
-# --- 3. O Analisador Semântico (Visitor da AST - Modificado) ---
+# --- 3. O Analisador Semântico (Visitor da AST) ---
 
 class SemanticAnalyzer:
     """
@@ -369,4 +367,5 @@ class SemanticAnalyzer:
         return 'string'
         
     def visit_BoolLiteral(self, node: ast.BoolLiteral):
+
         return 'bool'
