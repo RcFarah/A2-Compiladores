@@ -1,5 +1,3 @@
-# src/error_listener.py
-
 """
 Define um Error Listener customizado para o ANTLR.
 
@@ -20,4 +18,5 @@ class MiniLangErrorListener(ErrorListener):
         error_message = f"Erro de Sintaxe na linha {line}:{column} - {msg}"
         
         # Levanta uma exceção padrão do Python, que interromperá o parse
+
         raise SyntaxError(error_message)
