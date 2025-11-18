@@ -1,5 +1,3 @@
-# src/ast_builder.py
-
 """
 Implementa o Visitor que constrói a AST.
 Herda de MiniLangVisitor (gerado pelo ANTLR).
@@ -276,3 +274,4 @@ class AstBuilderVisitor(MiniLangVisitor):
             token = ctx.FALSE().symbol
 
             return ast.BoolLiteral(False, line=token.line, column=token.column)
+
