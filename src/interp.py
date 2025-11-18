@@ -1,5 +1,3 @@
-# src/interp.py
-
 """
 Implementa a Fase 4: Execução (Intérprete).
 (Corrigido para imprimir '1' em vez de 'true')
@@ -253,4 +251,5 @@ class Interpreter:
         return node.value
         
     def visit_BoolLiteral(self, node: ast.BoolLiteral):
+
         return node.value
